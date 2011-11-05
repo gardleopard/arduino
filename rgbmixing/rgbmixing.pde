@@ -12,6 +12,7 @@ int pink[] = {255, 50, 100};
 int white[] = {255, 255, 255};
 int purple[] = {255, 0, 255};
 int unknown[] = {0, 255, 255};
+int grey[] = {100, 100, 100};
 
 
 void setup(){
@@ -19,13 +20,25 @@ void setup(){
 }
 
 void loop(){
-  fade(white, purple, 4);
-  fade(purple, unknown, 4);
-  fade(unknown, green, 4);
-  
-  fade(green, yellow, 4);
-  fade(yellow, blue, 4);
-  fade(blue, white, 4);
+  int sleepTime = 2;
+  fade(white, purple, sleepTime);
+  fade(purple, unknown, sleepTime);
+  fade(unknown, green, sleepTime);
+  fade(green, grey, sleepTime); 
+  fade(grey, yellow, sleepTime);
+  fade(yellow, blue, sleepTime);
+  fade(blue, white, sleepTime);
+}
+
+void fadeLoop(){
+    int sleepTime = 2;
+  fade(white, purple, sleepTime);
+  fade(purple, unknown, sleepTime);
+  fade(unknown, green, sleepTime);
+  fade(green, grey, sleepTime); 
+  fade(grey, yellow, sleepTime);
+  fade(yellow, blue, sleepTime);
+  fade(blue, white, sleepTime);
 }
 
 void fade(int from[], int to[], int sleepTime){
