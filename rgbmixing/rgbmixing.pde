@@ -35,34 +35,16 @@ void fadeLoop(){
 }
 
 void fade(int from[], int to[], int sleepTime){
-  int redStart=from[0];
-  int redEnd=to[0];
-  int greenStart=from[1];
-  int greenEnd=to[1];
-  int blueStart=from[2];
-  int blueEnd=to[2];
-  int maxDiff = getDiff(redStart, redEnd);
-  int tmpDiff = getDiff(greenStart, greenEnd);
-  if(maxDiff < tmpDiff){
-    maxDiff = tmpDiff;
-  }
-  tmpDiff = getDiff(blueStart, blueEnd);
-  if(maxDiff < tmpDiff){
-    maxDiff = tmpDiff;
-  }
+  int maxDiff = getMaxDiff(from, to);
   for(int i = 0 ; i < maxDiff ; i++){
-    from = step(from, to);
+    step(from, to);
     writeRGB(from);
     delay(sleepTime);
-  } 
-  
-  
-  
+  }
 }
+
 void step(int from[], int to[]){
   for(int i = 0; i < 3; i++){
-    
-  
     if(from[i] < to[i]){
       from[i] = from[i]+1;
     }
@@ -70,6 +52,16 @@ void step(int from[], int to[]){
       from[i] = from[i]-1;
     }
   }
+}
+int getMaxDiff(int from[], int to[]){
+  int maxDiff = getDiff(from[0], to[0]);
+  for(int i = 1; i <3; i++){ //gotta have some love
+    int tmpDiff = getDiff(from[i], to[i]);
+    if(maxDiff < tmpDiff){
+      maxDiff = tmpDiff;
+    }
+  }
+  return maxDiff;
 }
 
 int getDiff(int x, int y){
