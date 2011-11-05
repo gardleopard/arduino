@@ -1,7 +1,3 @@
-int greenLed=3;
-int blueLed=5;
-int redLed=6;
-
 int rgbLed[] = {6, 3, 5};
 
 int red[] = {255, 0, 0};
@@ -11,8 +7,10 @@ int yellow[] = {255, 255, 0};
 int pink[] = {255, 50, 100};
 int white[] = {255, 255, 255};
 int purple[] = {255, 0, 255};
-int unknown[] = {0, 255, 255};
+int cyan[] = {0, 255, 255};
 int grey[] = {100, 100, 100};
+int magenta[] = {255, 0, 255};
+int olive[] = {128, 128, 0};
 
 
 void setup(){
@@ -20,23 +18,18 @@ void setup(){
 }
 
 void loop(){
-  int sleepTime = 2;
-  fade(white, purple, sleepTime);
-  fade(purple, unknown, sleepTime);
-  fade(unknown, green, sleepTime);
-  fade(green, grey, sleepTime); 
-  fade(grey, yellow, sleepTime);
-  fade(yellow, blue, sleepTime);
-  fade(blue, white, sleepTime);
+  fadeLoop();
 }
 
 void fadeLoop(){
-    int sleepTime = 2;
+   int sleepTime = random(1,15);
   fade(white, purple, sleepTime);
-  fade(purple, unknown, sleepTime);
-  fade(unknown, green, sleepTime);
-  fade(green, grey, sleepTime); 
-  fade(grey, yellow, sleepTime);
+  fade(purple, magenta, sleepTime);
+  fade(magenta, cyan, sleepTime);
+  fade(cyan, green, sleepTime);
+  fade(green, grey, sleepTime);
+  fade(grey, olive, sleepTime);
+  fade(olive, yellow, sleepTime); 
   fade(yellow, blue, sleepTime);
   fade(blue, white, sleepTime);
 }
