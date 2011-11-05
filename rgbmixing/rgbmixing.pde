@@ -50,30 +50,26 @@ void fade(int from[], int to[], int sleepTime){
   if(maxDiff < tmpDiff){
     maxDiff = tmpDiff;
   }
-  int r = redStart;
-  int g = greenStart;
-  int b = blueStart;
-  int tmp[] = {r,g,b};
   for(int i = 0 ; i < maxDiff ; i++){
-    r = step(r, redEnd);
-    g = step(g, greenEnd);
-    b = step(b, blueEnd);
-    tmp = {r,g,b};
-    writeRGB(tmp);
+    from = step(from, to);
+    writeRGB(from);
     delay(sleepTime);
   } 
   
   
   
 }
-int step(int currentValue, int targetValue){
-  if(currentValue == targetValue){
-    return currentValue;
+void step(int from[], int to[]){
+  for(int i = 0; i < 3; i++){
+    
+  
+    if(from[i] < to[i]){
+      from[i] = from[i]+1;
+    }
+    else if(from[i] > to[i]){
+      from[i] = from[i]-1;
+    }
   }
-  if(currentValue < targetValue){
-    return currentValue+1;
-  }
-  return currentValue-1;
 }
 
 int getDiff(int x, int y){
